@@ -1,27 +1,28 @@
 @extends('layouts.master')
 
-@section('title')
-Welcome!
-@endsection
 
 @section('content')
 
-<div class="row">
-    <div class="col-6">
-      <form action="#" method="post">
-          <div class="form-group">
-              <label for="email">Email</label>
-              <input class="form-control" type="text" name="email" id="email">
-          </div>
-          <div class="form-group">
-              <label for="screen-name">Screen Name</label>
-              <input class="form-control" type="text" name="screen-name" id="screen-name">
-          </div>
-          <div class="form-group">
-              <label for="email">Email</label>
-              <input class="form-control" type="text" name="email" id="email">
-          </div>
-      </form>
-    </div>
-</div>
+        <div class="flex-center position-ref full-height">
+            @if (Route::has('login'))
+                <div class="top-right links ">
+                    @auth
+                        <a href="{{ url('/home') }}">Home</a>
+                    @else
+                        <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth
+                </div>
+            @endif
+
+            <div class="content">
+                <div class="title m-b-md">
+                    Lemongrass
+                </div>
+
+                <div class="punchline">
+                 Live, Love, Share....
+                </div>
+            </div>
+        </div>
 @endsection
